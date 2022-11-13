@@ -13,6 +13,9 @@
 		1756544B29212B6A00A9A702 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1756544A29212B6A00A9A702 /* Preview Assets.xcassets */; };
 		1756544D29212B6A00A9A702 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756544C29212B6A00A9A702 /* Persistence.swift */; };
 		1756545029212B6A00A9A702 /* ManageDay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1756544E29212B6A00A9A702 /* ManageDay.xcdatamodeld */; };
+		17565458292139E800A9A702 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17565457292139E800A9A702 /* ViewModel.swift */; };
+		1756545B29213A8100A9A702 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756545A29213A8100A9A702 /* Home.swift */; };
+		1756545D29216E6F00A9A702 /* AddNewHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756545C29216E6F00A9A702 /* AddNewHabit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		1756544A29212B6A00A9A702 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1756544C29212B6A00A9A702 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		1756544F29212B6A00A9A702 /* ManageDay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ManageDay.xcdatamodel; sourceTree = "<group>"; };
+		17565457292139E800A9A702 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		1756545A29213A8100A9A702 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		1756545C29216E6F00A9A702 /* AddNewHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +61,10 @@
 		1756544229212B6700A9A702 /* ManageDay */ = {
 			isa = PBXGroup;
 			children = (
-				1756544329212B6700A9A702 /* ManageDayApp.swift */,
+				17565456292139C900A9A702 /* ViewModel */,
+				1756545929213A6B00A9A702 /* View */,
 				1756544529212B6700A9A702 /* ContentView.swift */,
+				1756544329212B6700A9A702 /* ManageDayApp.swift */,
 				1756544729212B6A00A9A702 /* Assets.xcassets */,
 				1756544C29212B6A00A9A702 /* Persistence.swift */,
 				1756544E29212B6A00A9A702 /* ManageDay.xcdatamodeld */,
@@ -71,6 +79,23 @@
 				1756544A29212B6A00A9A702 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		17565456292139C900A9A702 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				17565457292139E800A9A702 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1756545929213A6B00A9A702 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1756545A29213A8100A9A702 /* Home.swift */,
+				1756545C29216E6F00A9A702 /* AddNewHabit.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,9 +168,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17565458292139E800A9A702 /* ViewModel.swift in Sources */,
 				1756544D29212B6A00A9A702 /* Persistence.swift in Sources */,
 				1756545029212B6A00A9A702 /* ManageDay.xcdatamodeld in Sources */,
+				1756545D29216E6F00A9A702 /* AddNewHabit.swift in Sources */,
 				1756544629212B6700A9A702 /* ContentView.swift in Sources */,
+				1756545B29213A8100A9A702 /* Home.swift in Sources */,
 				1756544429212B6700A9A702 /* ManageDayApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
