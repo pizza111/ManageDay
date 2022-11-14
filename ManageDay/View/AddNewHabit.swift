@@ -79,6 +79,24 @@ struct AddNewHabit: View {
                 
                 Divider()
                     .padding(.vertical, 10)
+                
+                HStack {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Remainder")
+                            .fontWeight(.semibold)
+                        
+                        Text("Just notification")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Toggle(isOn: $viewModel.isRemainderOn) {}
+                        .labelsHidden()
+                }
+                .opacity(viewModel.notificationAccess ? 1 : 0)
+                
+                
             }
         }
     }
