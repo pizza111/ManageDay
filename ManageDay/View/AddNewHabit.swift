@@ -41,10 +41,45 @@ struct AddNewHabit: View {
                     }
                 }
                 .padding(.top, 15)
+                
+                Divider()
+                
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Frequency")
+                        .font(.callout.bold())
+                    let weekDays = Calendar.current.weekdaySymbols
+                    HStack(spacing: 10) {
+                        ForEach(weekDays, id: \.self) { day in
+                            let index = viewModel.weekDays.firstIndex { value in
+                                return value == day
+                            } ?? -1
+                            
+                            Text(day.prefix(2))
+                                .fontWeight(.semibold)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 12)
+                                .foregroundColor(index != -1 ? .white : .primary)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                        .fill(index != -1 ? Color(viewModel.habitColor) : Color("TFBG").opacity(0.4))
+                                }
+                                .onTapGesture {
+                                    withAnimation {
+                                        if index != -1 {
+                                            viewModel.weekDays.remove(at: index)
+                                        } else {
+                                            viewModel.weekDays.append(day)
+                                        }
+                                    }
+                                }
+                        }
+                    }
+                    .padding(.top, 15)
+                }
+                
+                Divider()
+                    .padding(.vertical, 10)
             }
-            Divider()
-                .padding(.vertical, 10)
-            
         }
     }
 }
