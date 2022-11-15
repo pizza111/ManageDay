@@ -96,7 +96,29 @@ struct AddNewHabit: View {
                 }
                 .opacity(viewModel.notificationAccess ? 1 : 0)
                 
-                
+                HStack(spacing: 12) {
+                    Label {
+                        Text(viewModel.remainderDate.formatted(date: .omitted, time: .shortened))
+                    } icon: {
+                        Image(systemName: "clock")
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 12)
+                    .background(Color("TFBG").opacity(0.4), in: RoundedRectangle(cornerRadius: 6, style: .continuous))
+                    .onTapGesture {
+                        withAnimation {
+                            viewModel.showTimePicker.toggle()
+                        }
+                    }
+                    
+                    TextField("Reminder text", text: $viewModel.remainderText)
+                        .padding(.horizontal)
+                        .padding(.vertical, 10)
+                        .background(Color("TFBG").opacity(0.4), in: RoundedRectangle(cornerRadius: 6, style: .continuous))
+                }
+                .frame(height: viewModel.isRemainderOn ? nil : 0)
+                .opacity(viewModel.isRemainderOn ? 1 : 0)
+                .opacity(viewModel.notificationAccess ? 1 : 0)
             }
         }
     }
