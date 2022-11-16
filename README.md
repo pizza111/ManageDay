@@ -1,5 +1,4 @@
-ManageDay allows us to set up a list of habits and choose number of weekdays those habits should be enabled on 
-with optional enabling notifications as a personal reminder. Custom colors you can choose from also put some extra flavor to it.
+ManageDay allows us to set up list of habits and choose the days those habits should be enabled on with optional enabling notifications such as a personal reminder. There are also custom color scemes you can choose from to put some extra flavor onto it.
 
 - SwiftUI
 - logic complex UI
