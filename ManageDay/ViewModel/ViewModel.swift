@@ -77,11 +77,26 @@ class ViewModel: ObservableObject {
         
         for weekDay in weekDays {
             let id = UUID().uuidString
-            let hour = 
+            let hour = calendar.component(.hour, from: remainderDate)
+            let minute = calendar.component(.minute, from: remainderDate)
+            let day = weekdaySymbols.firstIndex { currentDay in
+                return currentDay == weekDay
+            } ?? -1
+            
+            if day != -1 {
+                var components = DateComponents()
+                components.hour = hour
+                components.minute = minute
+                components.day = day + 1
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+                let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+                notificationIDs.append(id)
+                
+                try await UNUserNotificationCenter.current().add(request)
+            }
         }
-    }
-    func deleteHabit(context: NSManagedObjectContext) -> Bool {
-        
+        return notificationIDs
     }
     func doneStatus() -> Bool {
         let remainderStatus = isRemainderOn ? remainderText == "" : false
