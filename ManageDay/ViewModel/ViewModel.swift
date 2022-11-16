@@ -98,6 +98,18 @@ class ViewModel: ObservableObject {
         }
         return notificationIDs
     }
+    func deleteHabit(context: NSManagedObjectContext) -> Bool {
+        if let editHabit = editHabit {
+            if editHabit.isRemainderOn {
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: editHabit.notificationIDs ?? [])
+            }
+            context.delete(editHabit)
+            if let _ = try? context.save() {
+                return true
+            }
+        }
+        return false
+    }
     func doneStatus() -> Bool {
         let remainderStatus = isRemainderOn ? remainderText == "" : false
         if title == "" || weekDays.isEmpty || remainderStatus {
