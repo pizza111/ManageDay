@@ -117,4 +117,13 @@ class ViewModel: ObservableObject {
         }
         return true
     }
+    func resetData() {
+        title = ""
+        habitColor = "Color-1"
+        weekDays = []
+        isRemainderOn = false
+        remainderDate = Date()
+        remainderText = ""
+        editHabit = nil
+    }
 }
