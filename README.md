@@ -5,3 +5,5 @@ with optional enabling notifications as a personal reminder. Custom colors you c
 - complex UI
 - UserNotifications
 - Core Data
+
+![Uploading ezgif.com-gif-maker.gif…]()
