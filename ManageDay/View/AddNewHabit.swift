@@ -12,7 +12,7 @@ struct AddNewHabit: View {
     @Environment(\.self) var env
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             insideView
                 .animation(.easeInOut, value: viewModel.isRemainderOn)
                 .frame(maxHeight: .infinity, alignment: .top)
@@ -52,6 +52,28 @@ struct AddNewHabit: View {
                         .opacity(viewModel.doneStatus() ? 1 : 0.6)
                     }
                 }
+        }
+        .overlay {
+            if viewModel.showTimePicker {
+                ZStack {
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            viewModel.showTimePicker.toggle()
+                        }
+                    
+                    DatePicker.init("", selection: $viewModel.remainderDate, displayedComponents: [.hourAndMinute])
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color("TFBG"))
+                        }
+                        .padding()
+                }
+            }
         }
     }
     var insideView: some View {
