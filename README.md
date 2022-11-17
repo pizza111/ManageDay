@@ -6,8 +6,4 @@ ManageDay allows us to set up list of habits and choose the days those habits sh
 - UserNotifications
 - Core Data
 
-![ezgif com-gif-maker-2](https://user-images.githubusercontent.com/92029663/202268914-f768ec24-8f5d-4377-b8d0-677f1841837d.gif)
-
-![20 2](https://user-images.githubusercontent.com/92029663/202270117-e1a1380c-92e9-4bbb-826a-84741ae69b3a.png)
-
-![Simulator Screen Shot - iPhone SE (3rd generation) - 2022-11-17 at 07 26 50](https://user-images.githubusercontent.com/92029663/202372756-8f0cef3b-46f8-4995-9755-ca4296a7c7a6.png)
+![ezgif com-gif-maker-3](https://user-images.githubusercontent.com/92029663/202381973-98852064-e669-4825-a04d-ff553e4eec13.gif)
