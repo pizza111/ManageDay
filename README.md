@@ -7,4 +7,5 @@ ManageDay allows us to set up list of habits and choose the days those habits sh
 - Core Data
 
 ![ezgif com-gif-maker-3](https://user-images.githubusercontent.com/92029663/202381973-98852064-e669-4825-a04d-ff553e4eec13.gif)
-![copy](https://user-images.githubusercontent.com/92029663/202382297-40d34537-6b24-4fb9-bb38-78feb6ca2198.png)
+
+![copy](https://user-images.githubusercontent.com/92029663/202382487-0da21f7e-bcd5-4adb-b797-e1b6938fd4b8.png)
