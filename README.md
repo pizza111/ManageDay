@@ -2,7 +2,6 @@ ManageDay allows us to set up list of habits and choose the days those habits sh
 
 - SwiftUI
 - MVVM
-- logic complex UI
 - UserNotifications
 - Core Data
 
