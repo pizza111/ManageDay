@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddNewHabit: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject var viewModel: HomeViewModel
     @Environment(\.self) var env
     
     var body: some View {

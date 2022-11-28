@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import UserNotifications
 
-class ViewModel: ObservableObject {
+class HomeViewModel: ObservableObject {
     @Published var addNewHabit = false
     @Published var title: String = ""
     @Published var habitColor: String = "Card-1"
@@ -17,15 +17,14 @@ class ViewModel: ObservableObject {
     @Published var isRemainderOn: Bool = false
     @Published var remainderText: String = ""
     @Published var remainderDate: Date = Date()
-    
     @Published var notificationAccess = false
-    
     @Published var showTimePicker = false
     @Published var editHabit: Habit?
     
     init() {
         requestNotificationStatus()
     }
+    
     func requestNotificationStatus() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert]) { status, _ in
             DispatchQueue.main.async {
@@ -33,6 +32,7 @@ class ViewModel: ObservableObject {
             }
         }
     }
+    
     func addHabit(context: NSManagedObjectContext) async -> Bool {
         var habit: Habit!
         if let editHabit = editHabit {
@@ -65,6 +65,7 @@ class ViewModel: ObservableObject {
         }
         return false
     }
+    
     func scheduleNotification() async throws -> [String] {
         let content = UNMutableNotificationContent()
         content.title = "Habit Remainder"
@@ -98,6 +99,7 @@ class ViewModel: ObservableObject {
         }
         return notificationIDs
     }
+    
     func deleteHabit(context: NSManagedObjectContext) -> Bool {
         if let editHabit = editHabit {
             if editHabit.isRemainderOn {
@@ -110,6 +112,7 @@ class ViewModel: ObservableObject {
         }
         return false
     }
+    
     func doneStatus() -> Bool {
         let remainderStatus = isRemainderOn ? remainderText == "" : false
         if title == "" || weekDays.isEmpty || remainderStatus {
@@ -117,6 +120,7 @@ class ViewModel: ObservableObject {
         }
         return true
     }
+    
     func restoreEditData() {
         if let editHabit = editHabit {
             title = editHabit.title ?? ""
@@ -127,6 +131,7 @@ class ViewModel: ObservableObject {
             remainderText = editHabit.remainderText ?? ""
         }
     }
+    
     func resetData() {
         title = ""
         habitColor = "Color-1"
