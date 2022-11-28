@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Home: View {
     @FetchRequest(entity: Habit.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Habit.dateAdded, ascending: false)], animation: .easeInOut) var habits: FetchedResults<Habit>
-    @StateObject var viewModel = ViewModel()
+    @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
