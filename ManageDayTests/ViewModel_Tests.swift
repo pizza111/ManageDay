@@ -267,4 +267,31 @@ final class ViewModel_Tests: XCTestCase {
         XCTAssertTrue(sut.isRemainderOn)
         XCTAssertTrue(sut.remainderText == "remainder")
     }
+    
+    func test_HomeViewModel_resetData() {
+        let habit = Habit(context: context)
+        
+        sut.title = "title"
+        sut.habitColor = ""
+        sut.weekDays = Calendar.current.weekdaySymbols
+        sut.isRemainderOn = true
+        sut.remainderText = "remainder"
+        sut.editHabit = habit
+        
+        XCTAssertFalse(sut.title.isEmpty)
+        XCTAssertTrue(sut.habitColor.isEmpty)
+        XCTAssertFalse(sut.weekDays.isEmpty)
+        XCTAssertTrue(sut.isRemainderOn)
+        XCTAssertFalse(sut.remainderText.isEmpty)
+        XCTAssertFalse(sut.editHabit == nil)
+        
+        sut.resetData()
+        
+        XCTAssertTrue(sut.title.isEmpty)
+        XCTAssertFalse(sut.habitColor.isEmpty)
+        XCTAssertTrue(sut.weekDays.isEmpty)
+        XCTAssertFalse(sut.isRemainderOn)
+        XCTAssertTrue(sut.remainderText.isEmpty)
+        XCTAssertTrue(sut.editHabit == nil)
+    }
 }
