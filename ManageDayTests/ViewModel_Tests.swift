@@ -107,4 +107,60 @@ final class ViewModel_Tests: XCTestCase {
             }
         }
     }
+    
+    func test_HomeViewModel_deleteHabit_shouldReturnTrue() {
+        guard sut.editHabit == nil else {
+            return XCTFail()
+        }
+        // number of habits: 0
+        let fetchRequest1 = NSFetchRequest<NSFetchRequestResult>(entityName: "Habit")
+        let numberOfHabits1 = try? context.count(for: fetchRequest1)
+        XCTAssertTrue(numberOfHabits1 == 0)
+        
+        let habit = Habit(context: context)
+        try? context.save()
+        
+        sut.editHabit = habit
+        XCTAssertTrue(sut.editHabit != nil)
+        XCTAssertEqual(sut.editHabit, habit)
+        
+        // number of habits: 1
+        let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Habit")
+        let numberOfHabits2 = try? context.count(for: fetchRequest2)
+        XCTAssertTrue(numberOfHabits2 == 1)
+        
+        // delete habit
+        let boolResult = sut.deleteHabit(context: context)
+        XCTAssertTrue(boolResult)
+        
+        // number of habits: 0
+        let fetchRequest3 = NSFetchRequest<NSFetchRequestResult>(entityName: "Habit")
+        let numberOfHabits3 = try? context.count(for: fetchRequest3)
+        XCTAssertTrue(numberOfHabits3 == 0)
+        
+        XCTAssertNotEqual(numberOfHabits2, numberOfHabits1)
+        XCTAssertEqual(numberOfHabits1, numberOfHabits3)
+    }
+    
+    func test_HomeViewModel_deleteHabit_shouldReturnFalse() {
+        guard sut.editHabit == nil else {
+            return XCTFail()
+        }
+        
+        // number of habits: 0
+        let fetchRequest1 = NSFetchRequest<NSFetchRequestResult>(entityName: "Habit")
+        let numberOfHabits1 = try? context.count(for: fetchRequest1)
+        XCTAssertTrue(numberOfHabits1 == 0)
+
+        // delete habit
+        let boolResult = sut.deleteHabit(context: context)
+        XCTAssertFalse(boolResult)
+        
+        // number of habits: 0
+        let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Habit")
+        let numberOfHabits2 = try? context.count(for: fetchRequest2)
+        XCTAssertTrue(numberOfHabits2 == 0)
+        
+        XCTAssertEqual(numberOfHabits1, numberOfHabits2)
+    }
 }
