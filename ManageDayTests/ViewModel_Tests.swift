@@ -241,4 +241,30 @@ final class ViewModel_Tests: XCTestCase {
         let result5 = sut.doneStatus()
         XCTAssertFalse(result5)
     }
+    
+    func test_HomeViewModel_restoreEditData() {
+        guard sut.editHabit == nil else {
+            return XCTFail()
+        }
+        let weekDaysList = Calendar.current.weekdaySymbols
+        let title = UUID().uuidString
+        
+        let habit = Habit(context: context)
+        habit.title = title
+        habit.color = "Card-2"
+        habit.weekDays = weekDaysList
+        habit.isRemainderOn = true
+        habit.remainderText = "remainder"
+        
+        sut.editHabit = habit
+        XCTAssertFalse(sut.editHabit == nil)
+        
+        sut.restoreEditData()
+        
+        XCTAssertTrue(sut.title == title)
+        XCTAssertTrue(sut.habitColor == "Card-2")
+        XCTAssertTrue(sut.weekDays == weekDaysList)
+        XCTAssertTrue(sut.isRemainderOn)
+        XCTAssertTrue(sut.remainderText == "remainder")
+    }
 }
