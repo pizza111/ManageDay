@@ -163,4 +163,82 @@ final class ViewModel_Tests: XCTestCase {
         
         XCTAssertEqual(numberOfHabits1, numberOfHabits2)
     }
+    
+    func test_HomeViewModel_doneStatus_shouldReturnTrue() {
+        guard sut.isRemainderOn == false else {
+            return XCTFail()
+        }
+        sut.isRemainderOn = true
+        XCTAssertTrue(sut.isRemainderOn == true)
+        
+        let weekDaysList = Calendar.current.weekdaySymbols
+        sut.weekDays = weekDaysList
+        XCTAssertTrue(sut.weekDays.count == 7)
+        
+        sut.remainderText = "text"
+        XCTAssertFalse(sut.remainderText.isEmpty)
+        
+        sut.title = "title"
+        XCTAssertFalse(sut.title.isEmpty)
+        
+        let result = sut.doneStatus()
+        XCTAssertTrue(result)
+    }
+    
+    func test_HomeViewModel_doneStatus_shouldReturnFalse() {
+        // failed - isRemainderOn is false
+        guard sut.isRemainderOn == false else {
+            return XCTFail()
+        }
+        let result1 = sut.doneStatus()
+        XCTAssertFalse(result1)
+
+        // failed - isRemainderOn is true
+        sut.isRemainderOn = true
+        XCTAssertTrue(sut.isRemainderOn)
+
+        let result2 = sut.doneStatus()
+        XCTAssertFalse(result2)
+
+        //try 1
+        let weekDaysList = Calendar.current.weekdaySymbols
+        sut.weekDays = weekDaysList
+        XCTAssertTrue(sut.weekDays.count == 7)
+
+        sut.remainderText = "text"
+        XCTAssertFalse(sut.remainderText.isEmpty)
+
+        sut.title = ""
+        XCTAssertTrue(sut.title.isEmpty)
+
+        let result3 = sut.doneStatus()
+        XCTAssertFalse(result3)
+
+        //try 2
+        let weekDaysList2 = Calendar.current.weekdaySymbols
+        sut.weekDays = weekDaysList2
+        XCTAssertTrue(sut.weekDays.count == 7)
+
+        sut.remainderText = ""
+        XCTAssertTrue(sut.remainderText.isEmpty)
+
+        sut.title = "title"
+        XCTAssertFalse(sut.title.isEmpty)
+
+        let result4 = sut.doneStatus()
+        XCTAssertFalse(result4)
+
+        //try 3
+        sut.weekDays = []
+        XCTAssertTrue(sut.weekDays.isEmpty)
+
+        sut.remainderText = "text"
+        XCTAssertFalse(sut.remainderText.isEmpty)
+
+        sut.title = "title"
+        XCTAssertFalse(sut.title.isEmpty)
+
+        let result5 = sut.doneStatus()
+        XCTAssertFalse(result5)
+    }
 }
